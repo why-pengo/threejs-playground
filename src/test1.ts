@@ -51,18 +51,39 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 // document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+// const geometry = new THREE.BoxGeometry(1, 1, 1);
+const geometry = new THREE.IcosahedronGeometry(1, 0);
+// const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+// const cube = new THREE.Mesh(geometry, material);
+const icosahedron = new THREE.Mesh(geometry, material);
+// scene.add(cube);
+scene.add(icosahedron);
+
+// Ambient light
+const ambientLight = new THREE.AmbientLight(0x333333);
+scene.add(ambientLight);
+
+// Directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+scene.add(directionalLight);
+directionalLight.position.set(-1, 1, 0);
+
+// Directional light helper
+// const directionalLightHelper = new THREE.DirectionalLightHelper(
+//   directionalLight,
+// );
+// scene.add(directionalLightHelper);
 
 camera.position.z = 5;
 
 function animate() {
   console.log("here");
   requestAnimationFrame(animate);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  // cube.rotation.x += 0.01;
+  // cube.rotation.y += 0.01;
+  icosahedron.rotation.x += 0.01;
+  icosahedron.rotation.y += 0.01;
   renderer.render(scene, camera);
 }
 

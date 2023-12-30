@@ -1,6 +1,6 @@
 import "./style.scss";
-import typescriptLogo from "./typescript.svg";
-import threejsLogo from "./threejs.svg";
+import typescriptLogo from "/typescript.svg";
+import threejsLogo from "/threejs.svg";
 import viteLogo from "/vite.svg";
 import { setupTest1 } from "./test1.ts";
 import { setupCloseBtn } from "./utils.ts";
@@ -13,10 +13,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
     </a>
     <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
+      <img src="${typescriptLogo}" class="logo" alt="TypeScript logo" />
     </a>
     <a href="https://threejs.org/" target="_blank">
-      <img src="${threejsLogo}" class="logo vanilla" alt="Three.js logo" />
+      <img src="${threejsLogo}" class="logo" alt="Three.js logo" />
     </a>
     <h1>Vite + TypeScript + Three.js</h1>
     <div class="border-0 bg-transparent">
