@@ -2,8 +2,10 @@ import "./style.scss";
 import typescriptLogo from "./typescript.svg";
 import threejsLogo from "./threejs.svg";
 import viteLogo from "/vite.svg";
-import { setupCounter } from "./counter.ts";
 import { setupTest1 } from "./test1.ts";
+import { setupCloseBtn } from "./utils.ts";
+// Import all of Bootstrap's JS
+// import * as bootstrap from "bootstrap";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
@@ -17,11 +19,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <img src="${threejsLogo}" class="logo vanilla" alt="Three.js logo" />
     </a>
     <h1>Vite + TypeScript + Three.js</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <div class="card">
-      <button id="test1" type="button">Test1</button>
+    <div class="border-0 bg-transparent">
+      <button id="test1" class="btnTweak" type="button">Test1</button>
     </div>
     <p class="read-the-docs">
       Click on the Vite, TypeScript and Threejs logos to learn more
@@ -29,5 +28,5 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </div>
 `;
 
-setupCounter(document.querySelector<HTMLButtonElement>("#counter")!);
 setupTest1(document.querySelector<HTMLButtonElement>("#test1")!);
+setupCloseBtn(document.querySelector<HTMLButtonElement>("#closeBtn")!);
