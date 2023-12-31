@@ -3,7 +3,13 @@ import typescriptLogo from "/typescript.svg";
 import threejsLogo from "/threejs.svg";
 import viteLogo from "/vite.svg";
 import { setupTest1 } from "./test1.ts";
-import { setupCloseBtn } from "./utils.ts";
+import { loadView } from "./utils.ts";
+import {
+  setupCloseBtn,
+  setupPinBtn,
+  checkPinState,
+  setupUnpinBtn,
+} from "./utils.ts";
 // Import all of Bootstrap's JS
 // import * as bootstrap from "bootstrap";
 
@@ -28,5 +34,16 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   </div>
 `;
 
-setupTest1(document.querySelector<HTMLButtonElement>("#test1")!);
 setupCloseBtn(document.querySelector<HTMLButtonElement>("#closeBtn")!);
+setupPinBtn(document.querySelector<HTMLButtonElement>("#pinBtn")!);
+setupUnpinBtn(document.querySelector<HTMLButtonElement>("#unpinBtn")!);
+
+// Tests
+const test1 = document.querySelector<HTMLButtonElement>("#test1");
+setupTest1(test1!);
+
+// Check Pin State
+const curView = checkPinState();
+if (curView !== null) {
+  loadView(test1!);
+}

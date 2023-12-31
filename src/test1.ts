@@ -1,9 +1,8 @@
 import * as THREE from "three";
 import GUI from "lil-gui";
+import { setupView } from "./utils.ts";
 
-// const gui = new GUI();
 const gui = new GUI({
-  // autoPlace: true,
   container: document.getElementById("gui")!,
 });
 
@@ -55,9 +54,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const geometry = new THREE.IcosahedronGeometry(1, 0);
 // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-// const cube = new THREE.Mesh(geometry, material);
 const icosahedron = new THREE.Mesh(geometry, material);
-// scene.add(cube);
 scene.add(icosahedron);
 
 // Ambient light
@@ -67,7 +64,7 @@ scene.add(ambientLight);
 // Directional light
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
 scene.add(directionalLight);
-directionalLight.position.set(-1, 1, 0);
+directionalLight.position.set(-1, 1, 1);
 
 // Directional light helper
 // const directionalLightHelper = new THREE.DirectionalLightHelper(
@@ -78,25 +75,19 @@ directionalLight.position.set(-1, 1, 0);
 camera.position.z = 5;
 
 function animate() {
-  console.log("here");
+  console.log("animating...");
   requestAnimationFrame(animate);
-  // cube.rotation.x += 0.01;
-  // cube.rotation.y += 0.01;
   icosahedron.rotation.x += 0.01;
   icosahedron.rotation.y += 0.01;
   renderer.render(scene, camera);
 }
 
-animate();
-
 export function setupTest1(el: HTMLButtonElement) {
   el.addEventListener("click", () => {
-    const closeBtnEl = document.querySelector<HTMLDivElement>("#closeBtn");
-    closeBtnEl!.style.visibility = "visible";
-    const guiEl = document.querySelector<HTMLDivElement>("#gui");
-    guiEl!.style.visibility = "visible";
+    setupView();
     const app = document.querySelector<HTMLDivElement>("#test");
     app!.innerHTML = ``;
     app!.appendChild(renderer.domElement);
+    animate();
   });
 }
